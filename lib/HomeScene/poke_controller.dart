@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:desafio_poke_project/HomeScene/poke_model.dart';
 import 'package:desafio_poke_project/HomeScene/pokemon.dart';
 
@@ -8,6 +10,6 @@ class PokeController {
   Future<Pokemon> get pokemon => model.pokemon;
   
   loadpokemon(){
-    model.fetchPokemon(number++);
+    model.fetchPokemon(Random().nextInt(150));
   }
 }

@@ -24,11 +24,23 @@ class _PokeViewState extends State<PokeView> {
               }
 
               if(snapShot.hasData){
-                return Text(snapShot.data.name, 
-                  style: TextStyle(fontSize: 25),
+                return Column(
+                  children: [
+                    Image.network(
+                      snapShot.data.urlImage,
+                      height: 300,
+                      width: 300,
+                      fit: BoxFit.cover,
+                    ),
+                    Text(snapShot.data.name, 
+                      style: TextStyle(fontSize: 25),
+                    ),
+                  ],
                 );
+              }else if (snapShot.hasError){
+                return Text(snapShot.error);
               }else{
-                return Text('');
+                return Container();
               }
               
             }

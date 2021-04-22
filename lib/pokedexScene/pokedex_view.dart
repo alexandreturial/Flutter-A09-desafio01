@@ -35,6 +35,7 @@ class PokedexView extends StatelessWidget {
                   child: CardPokemon(
                     id: pokedexlist[index].id,
                     name: pokedexlist[index].name,
+                    type: pokedexlist[index].type
                   ),
                 ),
                 decoration: BoxDecoration(

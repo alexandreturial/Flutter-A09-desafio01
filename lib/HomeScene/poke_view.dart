@@ -24,7 +24,7 @@ class _PokeViewState extends State<PokeView> {
         title: Text('Pokedex'),
         actions: [
           IconButton(
-            icon: Icon(Icons.pages),
+            icon: Icon(Icons.book),
             onPressed: (){
               Navigator.push(
                 context, 
@@ -47,9 +47,12 @@ class _PokeViewState extends State<PokeView> {
                 future: controller.pokemon,
                 builder: (context, snapShot) {
                   if (snapShot.connectionState != ConnectionState.done) {
-                    return CircularProgressIndicator();
+                    return Image.network(
+                      'https://pokemongoinfo.netlify.app/pokeball.gif',
+                      height: 80,
+                      width: 80, 
+                    );
                   }
-
                   if (snapShot.hasData) {
                     name = snapShot.data.name;
                     id = snapShot.data.id;
@@ -60,7 +63,8 @@ class _PokeViewState extends State<PokeView> {
                           'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${snapShot.data.id}.gif',
                           height: 100,
                           width: 100,
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.contain,
+                          
                         ),
                         Text(
                           snapShot.data.name,
@@ -74,14 +78,28 @@ class _PokeViewState extends State<PokeView> {
                     return Container();
                   }
                 }),
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    controller.loadpokemon();
-                  });
-                },
-                child: Text('Load pokemon')
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        controller.prevPokemon();
+                      });
+                    },
+                    child: Icon(Icons.arrow_left)
+                ),
+                SizedBox(width: 20,),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        controller.nextPokemon();
+                      });
+                    },
+                    child: Icon(Icons.arrow_right)
+                ),
+              ],
+            )
           ],
         ),
       ),

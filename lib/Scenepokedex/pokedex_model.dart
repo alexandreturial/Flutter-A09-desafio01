@@ -1,4 +1,4 @@
-import 'package:desafio_poke_project/core/pokedex/pokemon.dart';
+import 'package:desafio_poke_project/Scenepokedex/pokemon.dart';
 
 class PokedexModel{
   List<Pokemon> _pokedex = [];

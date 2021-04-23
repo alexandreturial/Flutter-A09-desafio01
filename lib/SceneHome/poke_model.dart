@@ -1,5 +1,5 @@
 import 'package:desafio_poke_project/Api/api.dart';
-import 'package:desafio_poke_project/core/pokedex/pokemon.dart';
+import 'package:desafio_poke_project/SceneHome/pokemon.dart';
 
 class PokeModel{
   Future<Pokemon> _pokemon;

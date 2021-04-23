@@ -1,6 +1,6 @@
 
 import 'package:desafio_poke_project/SceneHome/poke_model.dart';
-import 'package:desafio_poke_project/core/pokedex/pokemon.dart';
+import 'package:desafio_poke_project/SceneHome/pokemon.dart';
 
 class PokeController {
   final model = PokeModel();

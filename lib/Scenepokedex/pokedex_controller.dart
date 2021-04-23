@@ -1,7 +1,7 @@
 
 
-import 'package:desafio_poke_project/core/pokedex/pokedex_model.dart';
-import 'package:desafio_poke_project/core/pokedex/pokemon.dart';
+import 'package:desafio_poke_project/Scenepokedex/pokedex_model.dart';
+import 'package:desafio_poke_project/Scenepokedex/pokemon.dart';
 
 class Pokedex{
   PokedexModel pokedexModel = new PokedexModel();

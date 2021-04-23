@@ -1,6 +1,6 @@
 import 'package:desafio_poke_project/Scenepokedex/Utils/get_color.dart';
 import 'package:desafio_poke_project/Scenepokedex/widget/card_pokemon.dart';
-import 'package:desafio_poke_project/core/pokedex/pokedex_controller.dart';
+import 'package:desafio_poke_project/Scenepokedex/pokedex_controller.dart';
 import 'package:flutter/material.dart';
 
 class PokedexView extends StatelessWidget {

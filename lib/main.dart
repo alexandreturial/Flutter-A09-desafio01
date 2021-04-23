@@ -1,4 +1,4 @@
-import 'package:desafio_poke_project/HomeScene/poke_view.dart';
+import 'package:desafio_poke_project/SceneHome/poke_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {

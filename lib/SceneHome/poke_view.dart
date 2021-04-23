@@ -1,8 +1,8 @@
 
-import 'package:desafio_poke_project/HomeScene/poke_controller.dart';
-import 'package:desafio_poke_project/HomeScene/pokemon.dart';
+import 'package:desafio_poke_project/SceneHome/poke_controller.dart';
+import 'package:desafio_poke_project/Scenepokedex/pokedex_view.dart';
 import 'package:desafio_poke_project/core/pokedex/pokedex_controller.dart';
-import 'package:desafio_poke_project/pokedexScene/pokedex_view.dart';
+import 'package:desafio_poke_project/core/pokedex/pokemon.dart';
 import 'package:flutter/material.dart';
 
 class PokeView extends StatefulWidget {

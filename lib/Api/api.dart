@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:desafio_poke_project/SceneHome/pokemon.dart';
+import 'package:desafio_poke_project/Core/pokemon.dart';
 import 'package:http/http.dart' as http;
 
 class API{

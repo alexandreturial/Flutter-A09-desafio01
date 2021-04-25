@@ -1,6 +1,6 @@
 
-import 'package:desafio_poke_project/SceneHome/poke_model.dart';
-import 'package:desafio_poke_project/SceneHome/pokemon.dart';
+import 'package:desafio_poke_project/Core/poke_model.dart';
+import 'package:desafio_poke_project/Core/pokemon.dart';
 
 class PokeController {
   final model = PokeModel();
@@ -10,6 +10,7 @@ class PokeController {
   
   nextPokemon(){
     model.fetchPokemon(number += 1);
+    
   }
 
   prevPokemon(){

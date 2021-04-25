@@ -1,8 +1,8 @@
 
-import 'package:desafio_poke_project/SceneHome/poke_controller.dart';
-import 'package:desafio_poke_project/SceneHome/pokemon.dart';
-import 'package:desafio_poke_project/Scenepokedex/pokedex_view.dart';
 import 'package:desafio_poke_project/Scenepokedex/pokedex_controller.dart';
+import 'package:desafio_poke_project/Core/poke_controller.dart';
+import 'package:desafio_poke_project/Core/pokemon.dart';
+import 'package:desafio_poke_project/Scenepokedex/pokedex_view.dart';
 import 'package:flutter/material.dart';
 
 class PokeView extends StatefulWidget {
@@ -19,26 +19,7 @@ class _PokeViewState extends State<PokeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Pokedex'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.book),
-            onPressed: (){
-              Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  builder: (context) => PokedexView(
-                    pokedex: pokedex,
-                  )
-                )
-              );
-            }
-          )
-        ],
-      ),
-      body: Align(
+    return Align(
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,9 +35,10 @@ class _PokeViewState extends State<PokeView> {
                     );
                   }
                   if (snapShot.hasData) {
+                    print(snapShot.data.type);
                     name = snapShot.data.name;
                     id = snapShot.data.id;
-                    type = snapShot.data.type;
+                    type = 'normal';
                     return Column(
                       children: [
                         Image.network(
@@ -65,6 +47,15 @@ class _PokeViewState extends State<PokeView> {
                           width: 100,
                           fit: BoxFit.contain,
                           
+                        ),
+                        Container(
+                          height: 100,
+                          child: ListView.builder(
+                            itemCount: snapShot.data.type.length,
+                            itemBuilder: (context, index){
+                              return Text(snapShot.data.type[index].name);
+                            }
+                          ),
                         ),
                         Text(
                           snapShot.data.name,
@@ -99,19 +90,19 @@ class _PokeViewState extends State<PokeView> {
                     child: Icon(Icons.arrow_right)
                 ),
               ],
-            )
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)
+              ),
+              onPressed: (){
+                pokedex.addPokemon(name, id, type);
+              },
+              child: Text('add to pokedex', style: TextStyle(color: Colors.white),),
+            ),
           ],
         ),
-      ),
-      floatingActionButton: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)
-        ),
-        onPressed: (){
-          pokedex.addPokemon(name, id, type);
-        },
-        child: Text('add to pokedex', style: TextStyle(color: Colors.white),),
-      ),
+      
     );
   }
 }

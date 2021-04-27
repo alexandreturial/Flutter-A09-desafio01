@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 
+
 class PokemonAbout extends StatelessWidget {
+  final List aboutList;
+  final Color colorBar;
+  
+  PokemonAbout({
+    Key key,
+    this.aboutList, 
+    this.colorBar
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 300,
-        height: 70,
-        alignment: Alignment.topCenter,
+        width: 350,
+        height: 55,
+        alignment: Alignment.center,
         child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
               return Container(
-                margin: EdgeInsets.symmetric(horizontal: 25),
-                color: Colors.blue,
-                
+                margin: EdgeInsets.symmetric(horizontal: 35),
+                color: colorBar,
                 width: 2,
               );
             },
@@ -21,14 +30,18 @@ class PokemonAbout extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "data$index",
-                      style: TextStyle(fontSize: 25),
+                      "Flame",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: colorBar
+                      ),
                     ),
                     Text(
-                      "data$index",
-                      style: TextStyle(fontSize: 20),
+                      "species",
+                      style: TextStyle(fontSize: 15),
                     ),
                   ],
                 ),

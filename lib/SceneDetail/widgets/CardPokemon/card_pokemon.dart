@@ -32,12 +32,13 @@ class CardPokemon extends StatelessWidget {
               bottomRight: Radius.circular(40),
             ),
           ),
-        child: Column(
-          children: [
-            title,
-            about,
-            evolve,
-          ],
+        child: Scaffold(
+          appBar: title,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,            children: [
+              about,
+              evolve,
+          ],)
         ),  
       ),
     );

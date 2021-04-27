@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 class PokemonEvolve extends StatelessWidget {
+  final String id;
+
+  PokemonEvolve({
+    Key key, 
+    this.id,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 300,
-        height: 100,
+        width: 320,
+        height: 120,
         alignment: Alignment.topCenter,
         child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
@@ -24,8 +31,8 @@ class PokemonEvolve extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.network(
-                      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png',
-                      height: 70,
+                      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/$id.png',
+                      height: 90,
                     ),
                     Text('Charmander')
                   ],)

@@ -4,11 +4,14 @@ class NavegationButton extends StatefulWidget {
   final bool isSelect;
   final VoidCallback onTap;
   final String title;
+  final Color colorButton;
+  
   const NavegationButton({
     Key key, 
     this.isSelect, 
     this.onTap,
-    this.title
+    this.title, 
+    this.colorButton
   }) : super(key: key);
 
   @override
@@ -23,10 +26,10 @@ class _NavegationButtonState extends State<NavegationButton> {
         onPressed: widget.onTap,
          style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-            widget.isSelect ? Colors.blue : Colors.white
+            widget.isSelect ? widget.colorButton : Colors.white
           ),
           padding: MaterialStateProperty.all(
-            EdgeInsets.only(top: 25, left: 25),
+            EdgeInsets.only(top: 35, left: 5),
           ),  
           minimumSize: MaterialStateProperty.all(
             Size(0, 100),

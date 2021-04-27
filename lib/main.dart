@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           )
         ],
       ), 
-      body:  PokeDetailView(),
+      body:  PokeView(),
       
       )
     );

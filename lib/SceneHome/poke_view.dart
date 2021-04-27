@@ -1,4 +1,5 @@
 
+import 'package:desafio_poke_project/SceneDetail/poke_detail_scene.dart';
 import 'package:desafio_poke_project/Scenepokedex/pokedex_controller.dart';
 import 'package:desafio_poke_project/Core/poke_controller.dart';
 import 'package:desafio_poke_project/Core/pokemon.dart';
@@ -39,29 +40,36 @@ class _PokeViewState extends State<PokeView> {
                     name = snapShot.data.name;
                     id = snapShot.data.id;
                     type = 'normal';
-                    return Column(
-                      children: [
-                        Image.network(
-                          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${snapShot.data.id}.gif',
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.contain,
-                          
-                        ),
-                        Container(
-                          height: 100,
-                          child: ListView.builder(
-                            itemCount: snapShot.data.type.length,
-                            itemBuilder: (context, index){
-                              return Text(snapShot.data.type[index].name);
-                            }
+                    return TextButton(
+                      onPressed: (){
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => PokeDetailView(
+                              id: id,
+                              type: snapShot.data.type[0].name,
+                            )
+                          )
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Image.network(
+                            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${snapShot.data.id}.gif',
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.contain,
+                            
                           ),
-                        ),
-                        Text(
-                          snapShot.data.name,
-                          style: TextStyle(fontSize: 25),
-                        ),
-                      ],
+                          Text(
+                            snapShot.data.name,
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   } else if (snapShot.hasError) {
                     return Text(snapShot.error);

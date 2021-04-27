@@ -20,4 +20,10 @@ class PokeController {
     }
     
   }
+  setPokemon(int id){
+    
+    model.fetchPokemon(id);
+    
+    
+  }
 }

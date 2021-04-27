@@ -28,12 +28,6 @@ class _PokeDetailViewState extends State<PokeDetailView> {
   final controller = PokeController();
   bool isAbout = true;
 
-  final List about = [
-    {"title": "Flame", "type": "species"},
-    {"title": "1.7 m", "type": "height"},
-    {"title": "199.5 ibs", "type": "weight"}
-  ];
-
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -77,18 +71,18 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                     });
                   },
                 ),
-                NavegationButton(
-                  isSelect: !isAbout,
-                  title: "Base Stats",
-                  colorButton: ColorPokemon.getColorType(type: widget.type),
-                  onTap: () {
-                    setState(() {
-                      if (isAbout) {
-                        isAbout = !isAbout;
-                      }
-                    });
-                  },
-                ),
+                // NavegationButton(
+                //   isSelect: !isAbout,
+                //   title: "Base Stats",
+                //   colorButton: ColorPokemon.getColorType(type: widget.type),
+                //   onTap: () {
+                //     setState(() {
+                //       if (isAbout) {
+                //         isAbout = !isAbout;
+                //       }
+                //     });
+                //   },
+                // ),
               ],
             ),
           ),
@@ -123,7 +117,7 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                       if (snapShot.hasData) {
                         var id = snapShot.data.id.toString().padLeft(3, '0');
                         var type = snapShot.data.type[0].name;
-                        print(type);
+                        
                         return CardPokemon(
                           title: PokemonTitle(
                             pokeName: snapShot.data.name,
@@ -131,11 +125,15 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                             types: snapShot.data.type,
                           ),
                           about: PokemonAbout(
-                            aboutList: about,
+                            height: snapShot.data.height,
+                            weight: snapShot.data.weight,
+                            base_expirence: snapShot.data.base_experience,
                             colorBar: ColorPokemon.getColorType(type: type),
                           ),
                           evolve: PokemonEvolve(
                             id: '$id',
+                            stats:snapShot.data.stats,
+                            barColor: ColorPokemon.getColorType(type: type),
                           ),
                         );
                       } else if (snapShot.hasError) {
@@ -155,10 +153,10 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                     child: Container(
                       height: 320,
                       child: Align(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.bottomRight,
                         child: Image.network(
                           'https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png',
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fitWidth,
                           height: 250,
                           width: 200,
                         ),

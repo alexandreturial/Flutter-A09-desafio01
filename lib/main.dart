@@ -19,30 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        title: Text('Pokedex'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.book),
-            onPressed: (){
-              Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  builder: (context) => PokedexView(
-                    pokedex: pokedex,
-                  )
-                )
-              );
-            }
-          )
-        ],
-      ), 
-      body:  PokeView(),
-      
-      )
+      home:PokeView()
     );
   }
 }

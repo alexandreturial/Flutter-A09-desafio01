@@ -1,4 +1,3 @@
-
 import 'package:desafio_poke_project/SceneDetail/poke_detail_scene.dart';
 import 'package:desafio_poke_project/Scenepokedex/pokedex_controller.dart';
 import 'package:desafio_poke_project/Core/poke_controller.dart';
@@ -20,7 +19,24 @@ class _PokeViewState extends State<PokeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text('Pokedex'),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.book),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PokedexView(
+                              pokedex: pokedex,
+                            )));
+              }),
+        ],
+      ),
+      body: Align(
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +48,7 @@ class _PokeViewState extends State<PokeView> {
                     return Image.network(
                       'https://pokemongoinfo.netlify.app/pokeball.gif',
                       height: 80,
-                      width: 80, 
+                      width: 80,
                     );
                   }
                   if (snapShot.hasData) {
@@ -41,16 +57,14 @@ class _PokeViewState extends State<PokeView> {
                     id = snapShot.data.id;
                     type = 'normal';
                     return TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.push(
-                          context, 
-                          MaterialPageRoute(
-                            builder: (context) => PokeDetailView(
-                              id: id,
-                              type: snapShot.data.type[0].name,
-                            )
-                          )
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PokeDetailView(
+                                      id: id,
+                                      type: snapShot.data.type[0].name,
+                                    )));
                       },
                       child: Column(
                         children: [
@@ -59,14 +73,10 @@ class _PokeViewState extends State<PokeView> {
                             height: 100,
                             width: 100,
                             fit: BoxFit.contain,
-                            
                           ),
                           Text(
                             snapShot.data.name,
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.black
-                            ),
+                            style: TextStyle(fontSize: 25, color: Colors.black),
                           ),
                         ],
                       ),
@@ -86,31 +96,34 @@ class _PokeViewState extends State<PokeView> {
                         controller.prevPokemon();
                       });
                     },
-                    child: Icon(Icons.arrow_left)
+                    child: Icon(Icons.arrow_left)),
+                SizedBox(
+                  width: 20,
                 ),
-                SizedBox(width: 20,),
                 ElevatedButton(
                     onPressed: () {
                       setState(() {
                         controller.nextPokemon();
                       });
                     },
-                    child: Icon(Icons.arrow_right)
-                ),
+                    child: Icon(Icons.arrow_right)),
               ],
             ),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)
-              ),
-              onPressed: (){
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
                 pokedex.addPokemon(name, id, type);
               },
-              child: Text('add to pokedex', style: TextStyle(color: Colors.white),),
+              child: Text(
+                'add to pokedex',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
-      
+      ),
     );
   }
 }

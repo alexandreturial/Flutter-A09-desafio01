@@ -174,20 +174,3 @@ class _PokeDetailViewState extends State<PokeDetailView> {
     );
   }
 }
-
-// FutureBuilder<Pokemon>(
-//         future: controller.pokemon,
-//         builder: (context, snapShot) {
-//           if (snapShot.connectionState != ConnectionState.done) {
-//               return Image.network(
-//                 'https://pokemongoinfo.netlify.app/pokeball.gif',
-//                 height: 80,
-//                 width: 80,
-//               );
-//           }else if (snapShot.hasError) {
-//             return Text(snapShot.error);
-//           } else {
-//             return Container();
-//           }
-//         }
-//       )

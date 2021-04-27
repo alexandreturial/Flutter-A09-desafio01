@@ -9,7 +9,8 @@ class PokemonEvolve extends StatelessWidget {
   PokemonEvolve({
     Key key,
     this.id,
-    this.stats, this.barColor,
+    this.stats,
+    this.barColor,
   }) : super(key: key);
 
   @override
@@ -22,13 +23,17 @@ class PokemonEvolve extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: stats.length,
             itemBuilder: (context, index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              return Container(
+                
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 80,
+                      height: 80,
+                      padding: EdgeInsets.all(15),
                       child: CircularProgressIndicator(
                         strokeWidth: 10,
                         value: stats[index].value * 0.01,
@@ -36,12 +41,12 @@ class PokemonEvolve extends StatelessWidget {
                         valueColor: AlwaysStoppedAnimation<Color>(barColor),
                       ),
                     ),
-                  Center(
-                  child: Text(
-                    stats[index].name
+                    Center(
+                     
+                      child: Text(stats[index].name)
                     )
-                  )
-                ],
+                  ],
+                ),
               );
             }));
   }

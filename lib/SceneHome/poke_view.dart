@@ -41,6 +41,7 @@ class _PokeViewState extends State<PokeView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text('Click no pokemon para ver os detalhes'),
             FutureBuilder<Pokemon>(
                 future: controller.pokemon,
                 builder: (context, snapShot) {

@@ -2,13 +2,11 @@ import 'package:desafio_poke_project/Core/pokemon.dart';
 import 'package:flutter/material.dart';
 
 class PokemonEvolve extends StatelessWidget {
-  final String id;
   final List<Stats> stats;
   final Color barColor;
 
   PokemonEvolve({
     Key key,
-    this.id,
     this.stats,
     this.barColor,
   }) : super(key: key);

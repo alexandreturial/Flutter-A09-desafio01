@@ -131,7 +131,6 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                             colorBar: ColorPokemon.getColorType(type: type),
                           ),
                           evolve: PokemonEvolve(
-                            id: '$id',
                             stats:snapShot.data.stats,
                             barColor: ColorPokemon.getColorType(type: type),
                           ),
@@ -148,20 +147,43 @@ class _PokeDetailViewState extends State<PokeDetailView> {
               builder: (context, snapShot) {
                 if (snapShot.hasData) {
                   var id = snapShot.data.id.toString().padLeft(3, '0');
-                  return Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      height: 320,
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Image.network(
-                          'https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png',
-                          fit: BoxFit.fitWidth,
-                          height: 250,
-                          width: 200,
+                  return Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          height: 320,
+                          child: Opacity(
+                            opacity: 0.5,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Image.asset(
+                                "assets/pokeball.png",
+                                fit: BoxFit.fitWidth,
+                                height: 250,
+                                width: 200,
+                                
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          height: 320,
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: Image.network(
+                              'https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png',
+                              fit: BoxFit.fitWidth,
+                              height: 250,
+                              width: 200,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 } else if (snapShot.hasError) {
                   return Text(snapShot.error);

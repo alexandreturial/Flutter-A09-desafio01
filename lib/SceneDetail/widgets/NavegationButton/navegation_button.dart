@@ -29,10 +29,10 @@ class _NavegationButtonState extends State<NavegationButton> {
             widget.isSelect ? widget.colorButton : Colors.white
           ),
           padding: MaterialStateProperty.all(
-            EdgeInsets.only(top: 35, left: 5),
+            EdgeInsets.only(top: 20, left: 5),
           ),  
           minimumSize: MaterialStateProperty.all(
-            Size(0, 100),
+            Size(0, 90),
           )
         ),
         child: Text(

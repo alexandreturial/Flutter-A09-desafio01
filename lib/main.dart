@@ -1,7 +1,5 @@
-import 'package:desafio_poke_project/SceneDetail/poke_detail_scene.dart';
 import 'package:desafio_poke_project/SceneHome/poke_view.dart';
 import 'package:desafio_poke_project/Scenepokedex/pokedex_controller.dart';
-import 'package:desafio_poke_project/Scenepokedex/pokedex_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {

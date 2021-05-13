@@ -43,7 +43,7 @@ class CardPokemon extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: Image.network(
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png',
+            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png',
             height: 100,
             width: 100,
             fit: BoxFit.cover,

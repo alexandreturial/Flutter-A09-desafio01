@@ -1,4 +1,3 @@
-import 'package:desafio_poke_project/Core/pokemon.dart';
 import 'package:flutter/material.dart';
 
 class PokemonAbout extends StatelessWidget {
@@ -6,7 +5,7 @@ class PokemonAbout extends StatelessWidget {
   final Color colorBar;
   final int height;
   final int weight;
-  final int base_expirence;
+  final int baseExpirence;
 
   PokemonAbout({
     Key key,
@@ -14,28 +13,20 @@ class PokemonAbout extends StatelessWidget {
     this.colorBar,
     this.height,
     this.weight,
-    this.base_expirence,
+    this.baseExpirence,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List about = [
-      {"name": "Height", "value": height},
-      {"name": "Height", "value": weight},
-      {"name": "Height", "value": base_expirence},
-    ];
 
-    return Container(
-        width: 350,
-        height: 55,
-        alignment: Alignment.center,
+    return Expanded(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
                 Text(
-                  '$base_expirence',
+                  '$baseExpirence',
                   style: TextStyle(fontSize: 20, color: colorBar),
                 ),
                 Text(

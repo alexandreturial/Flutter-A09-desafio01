@@ -42,10 +42,10 @@ class _PokeViewState extends State<PokeView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Click no pokemon para ver os detalhes'),
-            FutureBuilder<Pokemon>(
-                future: controller.pokemon,
+            StreamBuilder<Pokemon>(
+                stream: controller.pokemonStream.stream,
                 builder: (context, snapShot) {
-                  if (snapShot.connectionState != ConnectionState.done) {
+                  if (snapShot.connectionState != ConnectionState.active) {
                     return Image.network(
                       'https://pokemongoinfo.netlify.app/pokeball.gif',
                       height: 80,

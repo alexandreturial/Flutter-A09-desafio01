@@ -19,28 +19,19 @@ class CardPokemon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment(0, 1),
+    return Expanded(
       child: Container(
         padding: EdgeInsets.all(15),
-        height: 300,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              bottomLeft: Radius.circular(40),
-              bottomRight: Radius.circular(40),
-            ),
-          ),
-        child: Scaffold(
-          appBar: title,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,            children: [
-              about,
-              evolve,
-          ],)
-        ),  
-      ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            title,
+            about,
+            evolve,
+          ],
+        )
+      ),  
     );
   }
 }

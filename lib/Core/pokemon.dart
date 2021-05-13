@@ -5,7 +5,7 @@ class Pokemon{
   List<Ability> abilities;
   List<Type> type;
   List<Stats> stats;
-  int base_experience;
+  int baseExperience;
   int height;
   int weight;
 
@@ -14,7 +14,7 @@ class Pokemon{
     name = json['name'];
     urlImage = json['sprites']['front_default'];
 
-    base_experience = json['base_experience'];
+    baseExperience = json['base_experience'];
     height = json['height'];
     weight = json['weight'];
     

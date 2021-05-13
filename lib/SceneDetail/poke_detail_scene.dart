@@ -39,18 +39,15 @@ class _PokeDetailViewState extends State<PokeDetailView> {
         title: Text('Pokedex'),
         actions: [
           IconButton(
-            icon: Icon(Icons.book),
-            onPressed: (){
-              Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  builder: (context) => PokedexView(
-                    pokedex: pokedex,
-                  )
-                )
-              );
-            }
-          ),
+              icon: Icon(Icons.book),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PokedexView(
+                              pokedex: pokedex,
+                            )));
+              }),
         ],
       ),
       body: Stack(
@@ -71,23 +68,12 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                     });
                   },
                 ),
-                // NavegationButton(
-                //   isSelect: !isAbout,
-                //   title: "Base Stats",
-                //   colorButton: ColorPokemon.getColorType(type: widget.type),
-                //   onTap: () {
-                //     setState(() {
-                //       if (isAbout) {
-                //         isAbout = !isAbout;
-                //       }
-                //     });
-                //   },
-                // ),
               ],
             ),
           ),
           Container(
-              height: screenSize.height * 0.79,
+              height: screenSize.height * 0.80,
+              padding: EdgeInsets.only(bottom: 0),
               decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -111,28 +97,62 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                         bottomRight: Radius.circular(80),
                       )),
                 ),
-                FutureBuilder<Pokemon>(
-                    future: controller.pokemon,
+                StreamBuilder<Pokemon>(
+                    stream: controller.pokemonStream.stream,
                     builder: (context, snapShot) {
                       if (snapShot.hasData) {
                         var id = snapShot.data.id.toString().padLeft(3, '0');
                         var type = snapShot.data.type[0].name;
-                        
-                        return CardPokemon(
-                          title: PokemonTitle(
-                            pokeName: snapShot.data.name,
-                            pokeNum: "$id",
-                            types: snapShot.data.type,
-                          ),
-                          about: PokemonAbout(
-                            height: snapShot.data.height,
-                            weight: snapShot.data.weight,
-                            base_expirence: snapShot.data.base_experience,
-                            colorBar: ColorPokemon.getColorType(type: type),
-                          ),
-                          evolve: PokemonEvolve(
-                            stats:snapShot.data.stats,
-                            barColor: ColorPokemon.getColorType(type: type),
+                        return Container(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Opacity(
+                                    opacity: 0.5,
+                                    child: Container(
+                                      child: Image.asset(
+                                        "assets/pokeball.png",
+                                        fit: BoxFit.fitWidth,
+                                        alignment: Alignment.bottomLeft,
+                                        height: 290,
+                                        width: 200,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.bottomRight,
+                                    child: Image.network(
+                                      'https://assets.pokemon.com/assets/cms2/img/pokedex/full/$id.png',
+                                      fit: BoxFit.fitWidth,
+                                      alignment: Alignment.bottomRight,
+                                      height: 290,
+                                      width: 240,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              CardPokemon(
+                                title: PokemonTitle(
+                                  pokeName: snapShot.data.name,
+                                  pokeNum: "$id",
+                                  types: snapShot.data.type,
+                                ),
+                                about: PokemonAbout(
+                                  height: snapShot.data.height,
+                                  weight: snapShot.data.weight,
+                                  baseExpirence: snapShot.data.baseExperience,
+                                  colorBar:
+                                      ColorPokemon.getColorType(type: type),
+                                ),
+                                evolve: PokemonEvolve(
+                                  stats: snapShot.data.stats,
+                                  barColor:
+                                      ColorPokemon.getColorType(type: type),
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       } else if (snapShot.hasError) {
@@ -142,55 +162,6 @@ class _PokeDetailViewState extends State<PokeDetailView> {
                       }
                     }),
               ])),
-          FutureBuilder<Pokemon>(
-              future: controller.pokemon,
-              builder: (context, snapShot) {
-                if (snapShot.hasData) {
-                  var id = snapShot.data.id.toString().padLeft(3, '0');
-                  return Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          height: 320,
-                          child: Opacity(
-                            opacity: 0.5,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Image.asset(
-                                "assets/pokeball.png",
-                                fit: BoxFit.fitWidth,
-                                height: 250,
-                                width: 200,
-                                
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          height: 320,
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: Image.network(
-                              'https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png',
-                              fit: BoxFit.fitWidth,
-                              height: 250,
-                              width: 200,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                } else if (snapShot.hasError) {
-                  return Text(snapShot.error);
-                } else {
-                  return Container();
-                }
-              })
         ],
       ),
     );

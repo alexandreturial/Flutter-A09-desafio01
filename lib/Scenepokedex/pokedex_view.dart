@@ -48,8 +48,6 @@ class PokedexView extends StatelessWidget {
                 child: Text('Nenhum pokemon encontrado'),
               );
             }
-            
-            
           },
         ),
       ),

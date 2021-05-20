@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:desafio_poke_project/Core/pokemon.dart';
 import 'package:http/http.dart' as http;
 
-class API{
-
+class Api{
+  const Api();
   Future<Pokemon> fetchPokemon(int number) async {
     await Future.delayed(Duration(seconds: 1));
     final response = await http.get(Uri.https('pokeapi.co', '/api/v2/pokemon/$number'));

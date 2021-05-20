@@ -1,4 +1,6 @@
-class Pokemon{
+import 'package:desafio_poke_project/Scenepokedex/pokemon.dart';
+
+class Pokemon {
   int id;
   String name;
   String urlImage;
@@ -8,6 +10,18 @@ class Pokemon{
   int baseExperience;
   int height;
   int weight;
+
+  Pokemon(
+    this.id,
+    this.name,
+    this.urlImage,
+    this.abilities,
+    this.type,
+    this.stats,
+    this.baseExperience,
+    this.height,
+    this.weight,
+  );
 
   Pokemon.fromJson(Map<String, dynamic> json){
     id = json['id'];
